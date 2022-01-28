@@ -1,3 +1,17 @@
+const express = require("express");
+const http = require("http");
+
+const app = express();
+
+app.use(express.json());
+
+app.get("/", (_, res) => res.sendFile(__dirname + "/index.html"));
+app.listen(process.env.PORT);
+
+setInterval(() => {
+  http.get(`http://${process.env.PROJECT_DOMAIN}.repl.co/`);
+}, 224000);
+
 const mineflayer = require('mineflayer')
 const bot = mineflayer.createBot({
   host: 'IP', //ACA VA LA IP DE TU SERVIDOR  // SERVER IP
